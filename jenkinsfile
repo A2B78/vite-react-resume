@@ -8,7 +8,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("narsimha2580/test")
+       app = docker.build("jideoni/vite-react-resume")
     }
 
     stage('Test image') {
@@ -20,13 +20,13 @@ node {
 
     stage('Push image') {
         
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
+        docker.withRegistry('https://jideoni.hub.docker.com', 'Jide2021@') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
     
     stage('Trigger ManifestUpdate') {
                 echo "triggering updatemanifestjob"
-                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
+                build job: 'updatemanifest', parameters: [string(name: '1.0', value: env.BUILD_NUMBER)]
         }
 }
