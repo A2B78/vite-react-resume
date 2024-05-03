@@ -22,7 +22,7 @@ node {
         
         docker.withRegistry('https://registry.hub.docker.com', 'docker') {
             app.push("${env.BUILD_NUMBER}")
-            app.push("v1.0")
+            app.push("latest")
         }
     }
 }
