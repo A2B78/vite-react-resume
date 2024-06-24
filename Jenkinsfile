@@ -8,7 +8,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("jideoni/vite-react-resume")
+       app = docker.build("a2barros78/vite-react-resume")
     }
 
     stage('Test image') {
@@ -22,7 +22,7 @@ node {
         
         docker.withRegistry('https://registry.hub.docker.com', 'docker') {
             app.push("${env.BUILD_NUMBER}")
-            app.push("v1.0")
+            app.push("latest")
         }
     }
 }
